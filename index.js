@@ -8,7 +8,16 @@
  */
 function trimProperties(obj) {
   // ✨ implement
+  const newObj = {};
+  for(const key in obj) {
+    if(Object.prototype.hasOwnProperty.call(obj, key)){
+      const trimmed = obj[key].trim();
+      newObj[key] = trimmed
+    }
+  }
+  return newObj
 }
+// trimProperties({ foo: '  foo ', bar: 'bar ', baz: ' baz' })
 
 /**
  * [Exercise 2] trimPropertiesMutation trims in place the properties of an object
@@ -20,8 +29,15 @@ function trimProperties(obj) {
  */
 function trimPropertiesMutation(obj) {
   // ✨ implement
+  for(const key in obj){
+    if(Object.prototype.hasOwnProperty.call(obj, key)) {
+      obj[key] = obj[key].trim();
+    }
+  }
+  return obj
 }
 
+trimPropertiesMutation({ foo: '  foo ', bar: 'bar ', baz: ' baz' })
 /**
  * [Exercise 3] findLargestInteger finds the largest integer in an array of objects { integer: 1 }
  * @param {object[]} integers - an array of objects
@@ -32,6 +48,22 @@ function trimPropertiesMutation(obj) {
  */
 function findLargestInteger(integers) {
   // ✨ implement
+  if (!Array.isArray(integers) || integers.length === 0) {
+    return undefined;
+  }
+  let largestInteger = -Infinity;
+  for(const obj of integers){
+    if(typeof obj === 'object' && obj !== null && 'integer' in obj){
+      const integer = obj.integer;
+      if (Number.isInteger(integer) && integer > largestInteger) {
+        largestInteger = integer;
+      }
+    }
+  }
+  if(largestInteger === -Infinity){
+    return undefined
+  }
+  return largestInteger
 }
 
 class Counter {
@@ -41,6 +73,7 @@ class Counter {
    */
   constructor(initialNumber) {
     // ✨ initialize whatever properties are needed
+    this.count = initialNumber;
   }
 
   /**
@@ -57,6 +90,10 @@ class Counter {
    */
   countDown() {
     // ✨ implement
+    if(this.count >= 0){
+      this.count--;
+    }
+    return this.count
   }
 }
 
