@@ -90,8 +90,8 @@ class Counter {
    */
   countDown() {
     // ✨ implement
-    if(this.count >= 0){
-      this.count--;
+    if(this.count > 0){
+      return this.count--
     }
     return this.count
   }
