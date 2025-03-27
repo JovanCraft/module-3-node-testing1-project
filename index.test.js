@@ -145,3 +145,10 @@ describe('[Exercise 7] isEvenNumberAsync', () => {
     expect(result).toBe(false);
   })
 })
+
+
+
+
+
+
+
